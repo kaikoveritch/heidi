@@ -48,7 +48,7 @@ let sa_fermar  = Value("sa fermar")
 
 // o in O
 //───────────
-// o;[] in HE
+// o in HE
 //
 // o in O, e in HE
 //────────────────
@@ -83,7 +83,7 @@ let pause   = Value("pause")
 
 // o in W
 //───────────
-// o;[] in TE
+// o in TE
 //
 // o in W, e in TE
 //────────────────
@@ -156,37 +156,37 @@ func heidi2tita1 (_ order: Term, _ translation: Term) -> Goal {
    //─────────────────────
    // translation -TE-> []
    //
-   // order -HE-> L;deponer;[], L -TE-> L'
+   // order -HE-> L;deponer, L -TE-> L'
    //──────────────────────────────────────────
-   // translation -TE-> L';short;short;pause;[]
+   // translation -TE-> L';short;short;pause
    //
-   // order -HE-> L;dretg;[], L -TE-> L'
+   // order -HE-> L;dretg, L -TE-> L'
    //───────────────────────────────────────
-   // translation -TE-> L';whee;who;pause;[]
+   // translation -TE-> L';whee;who;pause
    //
-   // order -HE-> L;sanester;[], L -TE-> L'
+   // order -HE-> L;sanester, L -TE-> L'
    //──────────────────────────────────────────
-   // translation -TE-> L';wheet;wheeo;pause;[]
+   // translation -TE-> L';wheet;wheeo;pause
    //
-   // order -HE-> L;davent;[], L -TE-> L'
+   // order -HE-> L;davent, L -TE-> L'
    //──────────────────────────────────────────────────────
-   // translation -TE-> L';wheet;wheeo;wheet;wheet;pause;[]
+   // translation -TE-> L';wheet;wheeo;wheet;wheet;pause
    //
-   // order -HE-> L;davos;[], L -TE-> L'
+   // order -HE-> L;davos, L -TE-> L'
    //──────────────────────────────────────────
-   // translation -TE-> L';who;hee;who;pause;[]
+   // translation -TE-> L';who;hee;who;pause
    //
-   // order -HE-> L;plaun;[], L -TE-> L'
+   // order -HE-> L;plaun, L -TE-> L'
    //──────────────────────────────────────────────
-   // translation -TE-> L';hee;hee;hee;hee;pause;[]
+   // translation -TE-> L';hee;hee;hee;hee;pause
    //
-   // order -HE-> L;returnar;[], L -TE-> L'
+   // order -HE-> L;returnar, L -TE-> L'
    //──────────────────────────────────────────────
-   // translation -TE-> L';whee;whee;wheet;pause;[]
+   // translation -TE-> L';whee;whee;wheet;pause
    //
-   // order -HE-> L;sa_fermar;[], L -TE-> L'
+   // order -HE-> L;sa_fermar, L -TE-> L'
    //───────────────────────────────────────
-   // translation -TE-> L';long;pause;[]
+   // translation -TE-> L';long;pause
    return
       fresh{revorder in
          reverse(order,revorder) && heidi2tita1_aux(revorder,translation,List.empty)
@@ -194,19 +194,19 @@ func heidi2tita1 (_ order: Term, _ translation: Term) -> Goal {
 }
 
 func tita2heidi1 (_ order: Term, _ translation: Term) -> Goal {
-   // order -TE-> o1;pause;O, o1;pause;[] -HE-> t;[], O -HE-> T
+   // order -TE-> o1;pause;O, o1;pause -HE-> t, O -HE-> T
    //──────────────────────────────────────────────────────────
    // translation -HE-> t;T
    //
-   // order -TE-> o1;o2;pause;O, o1;o2;pause[] -HE-> t;[], O -HE-> T
+   // order -TE-> o1;o2;pause;O, o1;o2;pause -HE-> t, O -HE-> T
    //───────────────────────────────────────────────────────────────
    // translation -HE-> t;T
    //
-   // order -TE-> o1;o2;o3;pause;O, o1;o2;o3;pause[] -HE-> t;[], O -HE-> T
+   // order -TE-> o1;o2;o3;pause;O, o1;o2;o3;pause -HE-> t, O -HE-> T
    //─────────────────────────────────────────────────────────────────────
    // translation -HE-> t;T
    //
-   // order -TE-> o1;o2;o3;o4;pause;O, o1;o2;o3;o4;pause[] -HE-> t;[], O -HE-> T
+   // order -TE-> o1;o2;o3;o4;pause;O, o1;o2;o3;o4;pause -HE-> t, O -HE-> T
    //───────────────────────────────────────────────────────────────────────────
    // translation -HE-> t;T
    return
@@ -250,7 +250,7 @@ func tita2heidi1 (_ order: Term, _ translation: Term) -> Goal {
 
 
 //==============================================================================
-// Heidi -> Tita - 2nd semantic
+// Heidi -> Tita - 2nd semantic (optimize)
 //==============================================================================
 
 func heidi2tita2_aux (_ order: Term, _ translation: Term, _ acc: Term) -> Goal {
@@ -305,37 +305,37 @@ func heidi2tita2 (_ order: Term, _ translation: Term) -> Goal {
    //─────────────────────
    // translation -TE-> []
    //
-   // order -HE-> L;deponer;[], L -TE-> L'
+   // order -HE-> L;deponer, L -TE-> L'
    //──────────────────────────────────────────────
-   // translation -TE-> L';wheeo;hee;wheet;pause;[]
+   // translation -TE-> L';wheeo;hee;wheet;pause
    //
-   // order -HE-> L;dretg;[], L -TE-> L'
+   // order -HE-> L;dretg, L -TE-> L'
    //────────────────────────────────────────
-   // translation -TE-> L';hee;wheet;pause;[]
+   // translation -TE-> L';hee;wheet;pause
    //
-   // order -HE-> L;sanester;[], L -TE-> L'
+   // order -HE-> L;sanester, L -TE-> L'
    //──────────────────────────────────────────
-   // translation -TE-> L';wheet;wheeo;pause;[]
+   // translation -TE-> L';wheet;wheeo;pause
    //
-   // order -HE-> L;davent;[], L -TE-> L'
+   // order -HE-> L;davent, L -TE-> L'
    //──────────────────────────────────────────────
-   // translation -TE-> L';wheet;hee;wheet;pause;[]
+   // translation -TE-> L';wheet;hee;wheet;pause
    //
-   // order -HE-> L;davos;[], L -TE-> L'
+   // order -HE-> L;davos, L -TE-> L'
    //────────────────────────────────────────────────
-   // translation -TE-> L';wheet;wheeo;wheet;pause;[]
+   // translation -TE-> L';wheet;wheeo;wheet;pause
    //
-   // order -HE-> L;plaun;[], L -TE-> L'
+   // order -HE-> L;plaun, L -TE-> L'
    //────────────────────────────────────────────────
-   // translation -TE-> L';wheet;wheeo;wheeo;pause;[]
+   // translation -TE-> L';wheet;wheeo;wheeo;pause
    //
-   // order -HE-> L;returnar;[], L -TE-> L'
+   // order -HE-> L;returnar, L -TE-> L'
    //──────────────────────────────────────────
-   // translation -TE-> L';wheeo;wheet;pause;[]
+   // translation -TE-> L';wheeo;wheet;pause
    //
-   // order -HE-> L;sa_fermar;[], L -TE-> L'
+   // order -HE-> L;sa_fermar, L -TE-> L'
    //──────────────────────────────────────────
-   // translation -TE-> L';wheeo;wheeo;pause;[]
+   // translation -TE-> L';wheeo;wheeo;pause
    return
       fresh{revorder in
          reverse(order,revorder) && heidi2tita2_aux(revorder,translation,List.empty)
@@ -343,11 +343,11 @@ func heidi2tita2 (_ order: Term, _ translation: Term) -> Goal {
 }
 
 func tita2heidi2 (_ order: Term, _ translation: Term) -> Goal {
-   // order -TE-> o1;o2;pause;O, o1;o2;pause[] -HE-> t;[], O -HE-> T
+   // order -TE-> o1;o2;pause;O, o1;o2;pause -HE-> t, O -HE-> T
    //───────────────────────────────────────────────────────────────
    // translation -HE-> t;T
    //
-   // order -TE-> o1;o2;o3;pause;O, o1;o2;o3;pause[] -HE-> t;[], O -HE-> T
+   // order -TE-> o1;o2;o3;pause;O, o1;o2;o3;pause -HE-> t, O -HE-> T
    //─────────────────────────────────────────────────────────────────────
    // translation -HE-> t;T
    return
@@ -379,3 +379,133 @@ func tita2heidi2 (_ order: Term, _ translation: Term) -> Goal {
 }
 
 // PROOF: In the test file as the "proof()" test.
+
+
+//==============================================================================
+// Heidi -> Tita - 3rd semantic (accelerate)
+//==============================================================================
+
+func heidi2tita3_aux (_ order: Term, _ translation: Term, _ acc: Term) -> Goal {
+   return
+      (order === List.empty && translation === acc)
+      ||
+      fresh{L in
+         (  // deponer
+            order === List.cons(deponer,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheeo,List.cons(hee,List.cons(wheet,acc)))))
+         )
+         ||
+         (  // dretg
+            order === List.cons(dretg,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(hee,List.cons(wheet,acc))))
+         )
+         ||
+         (  //sanester
+            order === List.cons(sanester,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheet,List.cons(wheeo,acc))))
+         )
+         ||
+         (  //davent
+            order === List.cons(davent,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheet,List.cons(hee,List.cons(wheet,acc)))))
+         )
+         ||
+         (  //davos
+            order === List.cons(davos,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheet,List.cons(wheeo,List.cons(wheet,acc)))))
+         )
+         ||
+         (  //plaun
+            order === List.cons(plaun,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheet,List.cons(wheeo,List.cons(wheeo,acc)))))
+         )
+         ||
+         (  //returnar
+            order === List.cons(returnar,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheeo,List.cons(wheet,acc))))
+         )
+         ||
+         (  //sa fermar
+            order === List.cons(sa_fermar,L) &&
+            delayed(heidi2tita3_aux(L,translation,List.cons(wheeo,List.cons(wheeo,acc))))
+         )
+      }
+}
+
+func heidi2tita3 (_ order: Term, _ translation: Term) -> Goal {
+   // order -HE-> []
+   //─────────────────────
+   // translation -TE-> []
+   //
+   // order -HE-> L;deponer, L -TE-> L'
+   //──────────────────────────────────────────────
+   // translation -TE-> L';wheeo;hee;wheet
+   //
+   // order -HE-> L;dretg, L -TE-> L'
+   //────────────────────────────────────────
+   // translation -TE-> L';hee;wheet
+   //
+   // order -HE-> L;sanester, L -TE-> L'
+   //──────────────────────────────────────────
+   // translation -TE-> L';wheet;wheeo
+   //
+   // order -HE-> L;davent, L -TE-> L'
+   //──────────────────────────────────────────────
+   // translation -TE-> L';wheet;hee;wheet
+   //
+   // order -HE-> L;davos, L -TE-> L'
+   //────────────────────────────────────────────────
+   // translation -TE-> L';wheet;wheeo;wheet
+   //
+   // order -HE-> L;plaun, L -TE-> L'
+   //────────────────────────────────────────────────
+   // translation -TE-> L';wheet;wheeo;wheeo
+   //
+   // order -HE-> L;returnar, L -TE-> L'
+   //──────────────────────────────────────────
+   // translation -TE-> L';wheeo;wheet
+   //
+   // order -HE-> L;sa_fermar, L -TE-> L'
+   //──────────────────────────────────────────
+   // translation -TE-> L';wheeo;wheeo
+   return
+      fresh{revorder in
+         reverse(order,revorder) && heidi2tita3_aux(revorder,translation,List.empty)
+      }
+}
+
+func tita2heidi3 (_ order: Term, _ translation: Term) -> Goal {
+   // order -TE-> o1;o2;O, o1;o2 -HE-> t, O -HE-> T
+   //───────────────────────────────────────────────────────────────
+   // translation -HE-> t;T
+   //
+   // order -TE-> o1;o2;o3;O, o1;o2;o3 -HE-> t, O -HE-> T
+   //─────────────────────────────────────────────────────────────────────
+   // translation -HE-> t;T
+   return
+      (order === List.empty && translation === List.empty)
+      ||
+      freshn{v in
+         let t  = v["t"]
+         let T  = v["T"]
+         let o1 = v["o1"]
+         let o2 = v["o2"]
+         let o3 = v["o3"]
+         let O  = v["O"]
+         return
+            translation === List.cons(t,T) &&
+            (
+               // 2 whistles
+               (order === List.cons(o1,List.cons(o2,O))
+               &&
+               heidi2tita3(List.cons(t,List.empty),List.cons(o1,List.cons(o2,List.empty))))
+               ||
+               // 3 whistles
+               (order === List.cons(o1,List.cons(o2,List.cons(o3,O)))
+               &&
+               heidi2tita3(List.cons(t,List.empty),List.cons(o1,List.cons(o2,List.cons(o3,List.empty)))))
+            )
+            &&
+            delayed(tita2heidi3(O,T))
+      }
+}

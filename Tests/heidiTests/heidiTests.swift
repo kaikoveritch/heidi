@@ -275,6 +275,30 @@ class heidiTests: XCTestCase {
 // Semantic 3 tests
 //==============================================================================
 
+   // Test for the 3rd semantics (spoiler: it is flawed)
+   func testAcceleratedSemantic() {
+
+      let T = Variable(named: "T")
+      let H = Variable(named: "H")
+      var counter = 1
+
+      let orders = toHeidi([plaun,dretg,plaun,deponer,sa_fermar])
+
+      // Get all translations heidi -> tita for the sequence given, then all the
+      // translations tita -> heidi for each previous solution.
+      for sol1 in solve(heidi2tita3(orders, T)) {
+         for sol2 in solve(tita2heidi3(sol1[T], H)) {
+            print("\(counter)) ", terminator: "")
+            print(sol2.reified()[H])
+            counter += 1
+         }
+      }
+
+      // There are 4 solutions, 3 of which are incorrect, because of the lack of
+      // separation between the orders.
+   }
+
+
    // Display for readability
    func endTests() {
       print("\n[End of tests]\n")
@@ -290,6 +314,7 @@ class heidiTests: XCTestCase {
          ("testHeidi2Tita2", testHeidi2Tita2),
          ("testTita2Heidi2", testTita2Heidi2),
          ("proof", proof),
+         ("testAcceleratedSemantic", testAcceleratedSemantic),
          ("endTests", endTests),
       ]
    }
