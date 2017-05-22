@@ -509,3 +509,5 @@ func tita2heidi3 (_ order: Term, _ translation: Term) -> Goal {
             delayed(tita2heidi3(O,T))
       }
 }
+
+// It is possible to list all risked problems: Code in the test file.
